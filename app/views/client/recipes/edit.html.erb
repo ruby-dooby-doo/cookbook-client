@@ -27,6 +27,4 @@ I am the edit page
 <p>If you click the button below, you will delete this item</p>
 
 <!-- somehow make a delete request -->
-<%= form_tag "/client/recipes/#{@recipe['id']}", method: :delete do %>
-  <input type="submit" value="Remove this recipe">
-<% end %>
+<a href="/client/recipes/<%= @recipe['id'] %>" data-method="delete">Delete</a>
