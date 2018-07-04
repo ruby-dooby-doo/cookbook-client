@@ -41,4 +41,21 @@ class Client::RecipesController < ApplicationController
     @recipe = response.body
     render "edit.html.erb"
   end
+
+  def update
+    # take in params from the form
+    client_params = {
+      input_title: params[:input_title],
+      input_chef: params[:input_chef],
+      input_directions: params[:input_directions],
+      input_prep_time: params[:input_prep_time],
+      input_ingredients: params[:input_ingredients],
+      input_image_url: params[:input_image_url]
+    }
+    # make a unirest request to send the params to the API
+    response = Unirest.patch("localhost:3000/api/recipes/#{params[:id]}",parameters: client_params)
+    # show the updated recipe
+    @recipe = response.body
+    render "show.html.erb"
+  end
 end
