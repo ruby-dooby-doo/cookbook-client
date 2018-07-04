@@ -58,4 +58,12 @@ class Client::RecipesController < ApplicationController
     @recipe = response.body
     render "show.html.erb"
   end
+
+  def destroy
+    # get the recipe
+    recipe_id = params[:id]
+    # delete the recipe from the db
+    response = Unirest.delete("localhost:3000/api/recipes/#{recipe_id}")
+    render "destroy.html.erb"
+  end
 end

@@ -19,5 +19,14 @@ I am the edit page
   <div>
     Image URL: <input type="text" name="input_image_url" value="<%= @recipe['image_url'] %>" />
   </div>
-  <input type="submit" value="Make a new recipe">
+  <input type="submit" value="Edit a currently existing recipe">
+<% end %>
+
+
+
+<p>If you click the button below, you will delete this item</p>
+
+<!-- somehow make a delete request -->
+<%= form_tag "/client/recipes/#{@recipe['id']}", method: :delete do %>
+  <input type="submit" value="Remove this recipe">
 <% end %>
