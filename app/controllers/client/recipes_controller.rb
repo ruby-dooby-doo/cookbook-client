@@ -33,4 +33,12 @@ class Client::RecipesController < ApplicationController
     # show the newly created recipe to the user in HTML
     render "show.html.erb"
   end
+
+  def edit
+    # show the dang form
+    recipe_id = params[:id]
+    response = Unirest.get("localhost:3000/api/recipes/#{recipe_id}")
+    @recipe = response.body
+    render "edit.html.erb"
+  end
 end
