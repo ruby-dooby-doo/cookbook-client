@@ -1,4 +1,7 @@
+
 <a href="/client/recipes/new">Make a new recipe</a>
+
+
 
 <% @recipes.each do |recipe| %>
   <p>title: <a href="/client/recipes/<%= recipe['id'] %>"><%= recipe['title'] %></a></p>
@@ -10,3 +13,4 @@
   <hr>
 <% end %>
 
+<%= button_to "New User", "/client/recipes", method: :get %>

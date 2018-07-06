@@ -30,6 +30,7 @@ class Client::RecipesController < ApplicationController
       }
     )
     @recipe = response.body
+    flash[:success] = "You made a new recipe"
     # show the newly created recipe to the user in HTML
     redirect_to "/client/recipes/#{@recipe['id']}"
   end
@@ -56,7 +57,8 @@ class Client::RecipesController < ApplicationController
     response = Unirest.patch("localhost:3000/api/recipes/#{params[:id]}",parameters: client_params)
     # show the updated recipe
     @recipe = response.body
-    render "show.html.erb"
+    flash[:success] = "You updated a currently existing recipe"
+    redirect_to "/client/recipes/#{@recipe['id']}"
   end
 
   def destroy
@@ -64,6 +66,7 @@ class Client::RecipesController < ApplicationController
     recipe_id = params[:id]
     # delete the recipe from the db
     response = Unirest.delete("localhost:3000/api/recipes/#{recipe_id}")
-    render "destroy.html.erb"
+    flash[:danger] = "You just deleted a recipe"
+    redirect_to "/client/recipes"
   end
 end
