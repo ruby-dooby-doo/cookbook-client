@@ -31,7 +31,7 @@ class Client::RecipesController < ApplicationController
     )
     @recipe = response.body
     # show the newly created recipe to the user in HTML
-    render "show.html.erb"
+    redirect_to "/client/recipes/#{@recipe['id']}"
   end
 
   def edit
