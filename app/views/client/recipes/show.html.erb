@@ -6,11 +6,21 @@
 <p>chef: <%= @recipe['chef'] %></p>
 <p>ingredients: </p>
 <ul>
-  <% @recipe['ingredients'].each do |ingredient| %>
+  <% @recipe['formatted']['ingredients'].each do |ingredient| %>
     <li><%= ingredient %></li>
   <% end %>
 </ul>
-<p>prep_time: <%= @recipe['prep_time'] %></p>
-<p>directions: <%= @recipe['directions'] %></p>
+<p>prep_time: <%= @recipe['formatted']['hours_and_minutes'] %></p>
+<p>directions:</p>
+<ol>
+  <% @recipe['formatted']['directions'].each do |direction| %>
+    <li>
+      <%= direction %>
+    </li>
+  <% end %>
+</ol>
+
+<p><%= @recipe['formatted']['created_at'] %></p>
+
 
 <p><a href="/client/recipes/<%= @recipe['id'] %>/edit">Edit or delete this recipe</a></p>
