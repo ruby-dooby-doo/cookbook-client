@@ -3,7 +3,7 @@
 
 <p>id: <%= @recipe['id'] %></p>
 <p>title: <%= @recipe['title'] %></p>
-<p>chef: <%= @recipe['chef'] %></p>
+<p>user: <%= @recipe['user']['name'] %></p>
 <p>ingredients: </p>
 <ul>
   <% @recipe['formatted']['ingredients'].each do |ingredient| %>

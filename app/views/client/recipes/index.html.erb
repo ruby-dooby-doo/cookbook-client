@@ -8,7 +8,8 @@
 <% @recipes.each do |recipe| %>
   <p>title: <a href="/client/recipes/<%= recipe['id'] %>"><%= recipe['title'] %></a></p>
   <p>id: <%= recipe['id'] %></p>
-  <p>chef: <%= recipe['chef'] %></p>
+  <p>user: <%= recipe['user']['name'] %></p>
+
   <p>ingredients: <%= recipe['ingredients'] %></p>
   <p>prep_time: <%= recipe['prep_time'] %></p>
   <p>directions: <%= recipe['directions'] %></p>
