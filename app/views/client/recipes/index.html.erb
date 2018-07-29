@@ -8,24 +8,26 @@
 <% end %>
 
 
-<div class="row">
-  <% @recipes.each do |recipe| %>
-    <div class="col-sm-6">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title"><%= recipe['title'] %></h5>
-          <p class="card-text"><%= recipe['directions'] %></p>
-          <p>id: <%= recipe['id'] %></p>
-          <p>ingredients: <%= recipe['ingedients'] %></p>
-          <p>user: <%= recipe['user']['name'] %></p>
-          <img style="width:100px;height:100px;" src="<%= recipe['image_url'] %>">
-          <p>prep_time: <%= recipe['prep_time'] %></p>
-          <a href="/client/recipes/<%= recipe['id'] %>" class="btn btn-primary">Go to the show page</a>
+  <% @recipes.each_slice(3) do |two_recipes| %>
+    <div class="row">
+      <% two_recipes.each do |recipe| %>
+        <div class="col-sm-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title"><%= recipe['title'] %></h5>
+              <p class="card-text"><%= recipe['directions'] %></p>
+              <p>id: <%= recipe['id'] %></p>
+              <p>ingredients: <%= recipe['ingedients'] %></p>
+              <p>user: <%= recipe['user']['name'] %></p>
+              <img style="width:100px;height:100px;" src="<%= recipe['image_url'] %>">
+              <p>prep_time: <%= recipe['prep_time'] %></p>
+              <a href="/client/recipes/<%= recipe['id'] %>" class="btn btn-primary">Go to the show page</a>
+            </div>
+          </div>
         </div>
-      </div>
+      <% end %>
     </div>
   <% end %>
-</div>
 
 
 
