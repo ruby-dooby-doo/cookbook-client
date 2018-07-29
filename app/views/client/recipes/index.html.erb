@@ -1,3 +1,5 @@
+
+
 <a href="/client/recipes/new">Make a new recipe</a>
 
 <%= form_tag "/client/recipes", method: :get do %>
@@ -5,15 +7,27 @@
   <input type="submit" value="Search for stuff here">
 <% end %>
 
-<% @recipes.each do |recipe| %>
-  <p>title: <a href="/client/recipes/<%= recipe['id'] %>"><%= recipe['title'] %></a></p>
-  <p>id: <%= recipe['id'] %></p>
-  <p>user: <%= recipe['user']['name'] %></p>
 
-  <p>ingredients: <%= recipe['ingredients'] %></p>
-  <p>prep_time: <%= recipe['prep_time'] %></p>
-  <p>directions: <%= recipe['directions'] %></p>
-  <hr>
-<% end %>
+<div class="row">
+  <% @recipes.each do |recipe| %>
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"><%= recipe['title'] %></h5>
+          <p class="card-text"><%= recipe['directions'] %></p>
+          <p>id: <%= recipe['id'] %></p>
+          <p>ingredients: <%= recipe['ingedients'] %></p>
+          <p>user: <%= recipe['user']['name'] %></p>
+          <img style="width:100px;height:100px;" src="<%= recipe['image_url'] %>">
+          <p>prep_time: <%= recipe['prep_time'] %></p>
+          <a href="/client/recipes/<%= recipe['id'] %>" class="btn btn-primary">Go to the show page</a>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+
+
 
 <%= button_to "New User", "/client/recipes", method: :get %>
