@@ -12,3 +12,8 @@ recipeContainer.appendChild(recipeTemplate.content.cloneNode(true));
 recipeContainer.appendChild(recipeTemplate.content.cloneNode(true));
 recipeContainer.appendChild(recipeTemplate.content.cloneNode(true));
 recipeContainer.appendChild(recipeTemplate.content.cloneNode(true));
+
+
+axios.get("localhost:3000/api/recipes").then(function(response) {
+  console.log(response);
+});
